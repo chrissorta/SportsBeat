@@ -1,36 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import List from './components/List.jsx';
+import Intro from './components/Intro.jsx';
 import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      username: '',
+      page: 0
     }
+
+    this.setUser = this.setUser.bind(this);
   }
 
   componentDidMount() {
-    $.ajax({
-      url: '/items',
-      success: (data) => {
-        this.setState({
-          items: data
-        })
-      },
-      error: (err) => {
-        console.log('err', err);
-      }
-    });
+
   }
 
-  render () {
-    return (<div>
-      <h1>Item List</h1>
-      <List items={this.state.items}/>
-    </div>)
+  setUser(username) {
+    this.setState({username, page: 1});
+  }
+
+
+
+  render() {
+    if(this.state.page === 0) {
+
+      return (<Intro setUser={this.setUser}/>)
+    } else if(this.state.page === 1) {
+      return (
+      <div>Betting Dashboard</div>
+      )
+    }
+
   }
 }
 

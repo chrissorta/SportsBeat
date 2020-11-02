@@ -7,9 +7,9 @@ USE sportsbetting;
 CREATE TABLE teams (
   id int NOT NULL AUTO_INCREMENT,
   team varchar(25) NOT NULL,
-  Abbreviation varchar(25) NOT NULL,
-  Conference varchar(25) NOT NULL,
-  Division varchar(25) NOT NULL,
+  abbreviation varchar(25) NOT NULL,
+  conference varchar(25) NOT NULL,
+  division varchar(25) NOT NULL,
   PRIMARY KEY (ID)
 );
 
