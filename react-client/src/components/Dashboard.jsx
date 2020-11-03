@@ -14,8 +14,6 @@ class Dashboard extends React.Component {
     constructor(props) {
       super(props);
 
-
-
     }
 
 
@@ -25,8 +23,7 @@ class Dashboard extends React.Component {
         <h1>
           Betting Dashboard
        </h1>
-       <NewBet />
-
+       <NewBet username={this.props.username}/>
       </Main >
     )
   }

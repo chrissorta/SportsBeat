@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
+      username: 'test',
       page: 1
     }
 
@@ -34,7 +34,7 @@ class App extends React.Component {
       )
     } else if (this.state.page === 1) {
       return (
-        <Dashboard />
+        <Dashboard  username={this.state.username}/>
       )
     }
 

@@ -1,32 +1,57 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+import TeamBet from './TeamBet.jsx';
+import ScoreBet from './ScoreBet.jsx';
 
-
-const TrackNewBet  =styled.button`
+const TrackNewBet = styled.button`
   margin-bottom: 15px;
 `
 
 const SelectSpaced = styled.select`
   margin-left: 7px;
+  margin-bottom: 10px;
 `
+
+const StyledInput = styled.input `
+margin-left: 7px;
+margin-bottom: 10px;
+`
+
 class NewBet extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      teams: [],
       optionsOn: false,
       betType: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.onSubmitClick = this.onSubmitClick.bind(this);
 
   }
+
+  componentDidMount() {
+    axios.get('/teams')
+      .then((teams) => {
+
+        this.setState({ teams: teams.data })
+      }
+      )
+  }
+
 
 
   handleChange(e) {
     this.setState({ betType: e.target.value })
   }
 
+  onSubmitClick() {
+    this.setState({ optionsOn: !this.state.optionsOn, betType: '' });
+
+  };
 
   render() {
 
@@ -55,10 +80,16 @@ class NewBet extends React.Component {
         </div>
         {
           this.state.betType === 'spread' &&
-          <div>
+          <TeamBet onSubmitClick={ this.onSubmitClick} spread={true}teams={this.state.teams} username={this.props.username}/>
+        }
+        {
+          this.state.betType === 'ml' &&
+          <TeamBet onSubmitClick={this.onSubmitClick}spread={false} teams={this.state.teams} username={this.props.username}/>
 
-          </div>
-
+        }
+        {
+          this.state.betType === 'o/u' &&
+          <ScoreBet onSubmitClick={this.onSubmitClick} teams={this.state.teams} username={this.props.username}/>
         }
       </div>
 
