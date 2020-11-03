@@ -1,5 +1,17 @@
 import React from 'react';
 // import ListItem from './ListItem.jsx';
+import styled from 'styled-components';
+
+
+const Main = styled.div`
+  // position:relative;
+  // float: middle;
+  // display: block;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+`
+
 
 class Intro extends React.Component {
   constructor(props) {
@@ -27,7 +39,7 @@ class Intro extends React.Component {
   render() {
 
     return (
-      <div>
+      <Main>
         <h1>Welcome to the NFL Sports Betting Tracker</h1>
         <h2>Type in your username below to access your account</h2>
         <form onSubmit={(e) => { this.submitUser(e) }}>
@@ -36,7 +48,7 @@ class Intro extends React.Component {
           <input type="submit"></input>
         </form>
         {/* <List items={this.state.teams} /> */}
-      </div>
+      </Main>
     )
   }
 }
