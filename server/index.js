@@ -24,6 +24,28 @@ app.get('/teams',  (req, res) => {
   });
 });
 
+app.get('/api/stats/overall',  (req, res) => {
+  bets.grabOverall(req.query.username, (err, data) => {
+    if(err) {
+      res.sendStatus(500);
+    } else {
+      res.json(data);
+    }
+  });
+});
+
+
+app.get('/api/stats/favorites',  (req, res) => {
+  bets.grabFavorites(req.query.username, (err, data) => {
+    if(err) {
+      res.sendStatus(500);
+    } else {
+      res.json(data);
+    }
+  });
+});
+
+
 app.post('/teamBet', (req, res) => {
   bets.postTeamBet(req.body , (err, data) => {
     if(err) {

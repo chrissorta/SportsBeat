@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Intro from './components/Intro.jsx';
 import Dashboard from './components/Dashboard.jsx';
-import axios from 'axios';
+import styled from 'styled-components';
+
+
+const HeadDiv = styled.div`
+  font-family: Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -30,11 +35,15 @@ class App extends React.Component {
     if (this.state.page === 0) {
 
       return (
-        <Intro setUser={this.setUser} />
+        <HeadDiv>
+          <Intro setUser={this.setUser} />
+        </HeadDiv>
       )
     } else if (this.state.page === 1) {
       return (
-        <Dashboard  username={this.state.username}/>
+        <HeadDiv>
+          <Dashboard username={this.state.username} />
+        </HeadDiv>
       )
     }
 

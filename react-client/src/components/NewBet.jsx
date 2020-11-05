@@ -38,6 +38,7 @@ class NewBet extends React.Component {
       .then((teams) => {
 
         this.setState({ teams: teams.data })
+
       }
       )
   }
@@ -50,6 +51,7 @@ class NewBet extends React.Component {
 
   onSubmitClick() {
     this.setState({ optionsOn: !this.state.optionsOn, betType: '' });
+    this.props.updateTotals();
 
   };
 
@@ -84,7 +86,7 @@ class NewBet extends React.Component {
         }
         {
           this.state.betType === 'ml' &&
-          <TeamBet onSubmitClick={this.onSubmitClick}spread={false} teams={this.state.teams} username={this.props.username}/>
+          <TeamBet onSubmitClick={this.onSubmitClick} spread={false} teams={this.state.teams} username={this.props.username}/>
 
         }
         {
