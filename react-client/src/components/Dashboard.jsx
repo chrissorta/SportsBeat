@@ -4,13 +4,9 @@ import NewBet from './NewBet.jsx';
 import Analytics from './Analytics';
 
 const Main = styled.div`
-  // position:relative;
-  // float: middle;
-  // display: block;
   width: 50%;
   margin: auto;
   text-align: center;
-
 `
 class Dashboard extends React.Component {
     constructor(props) {
